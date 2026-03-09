@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Happy Birthday Anshika 🎂</title>
+
+<style>
+
+body{
+margin:0;
+font-family:Poppins;
+background:linear-gradient(135deg,#ff758c,#ff7eb3);
+color:white;
+text-align:center;
+overflow-x:hidden;
+padding:40px;
+}
+
+.container{
+max-width:900px;
+margin:auto;
+background:rgba(0,0,0,0.35);
+padding:40px;
+border-radius:20px;
+line-height:1.8;
+}
+
+h1{
+font-size:40px;
+}
+
+#countdown{
+font-size:30px;
+margin:20px 0;
+font-weight:bold;
+}
+
+img{
+width:200px;
+border-radius:20px;
+margin-bottom:20px;
+border:4px solid white;
+}
+
+button{
+padding:12px 25px;
+border:none;
+border-radius:25px;
+font-size:16px;
+cursor:pointer;
+background:#ff4b7d;
+color:white;
+margin-top:20px;
+}
+
+#message{
+margin-top:30px;
+text-align:left;
+white-space:pre-line;
+font-size:18px;
+}
+
+#surprise{
+display:none;
+font-size:25px;
+margin-top:20px;
+}
+
+.heart{
+position:absolute;
+color:#ff4b7d;
+animation:fall 6s linear infinite;
+}
+
+@keyframes fall{
+0%{transform:translateY(-10vh);opacity:1;}
+100%{transform:translateY(110vh);opacity:0;}
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>🎂 Happy Birthday Anshika Ji 🎂</h1>
+
+<img src="anshika.jpg">
+
+<div id="countdown"></div>
+
+<button onclick="startMessage()">💌 Read My Message</button>
+
+<div id="message"></div>
+
+<button onclick="showSurprise()">🎁 Secret Surprise</button>
+
+<div id="surprise">✨ You are special, Anshika ji ✨</div>
+
+</div>
+
+<script>
+
+/* countdown */
+
+var birthday=new Date("March 30, 2026 00:00:00").getTime();
+
+setInterval(function(){
+
+var now=new Date().getTime();
+var distance=birthday-now;
+
+var days=Math.floor(distance/(1000*60*60*24));
+var hours=Math.floor((distance%(1000*60*60*24))/(1000*60*60));
+var minutes=Math.floor((distance%(1000*60*60))/(1000*60));
+var seconds=Math.floor((distance%(1000*60))/1000);
+
+document.getElementById("countdown").innerHTML=
+days+" Days "+hours+" Hours "+minutes+" Minutes "+seconds+" Seconds";
+
+},1000);
+
+/* typewriter message */
+
+var text=`Anshika ji,
+
+Aaj se 30 March tak ka har din mere liye thoda sa special ho gaya hai,
+kyunki har guzarne wale din ke saath aapka birthday aur kareeb aa raha hai.
+
+Sach kahun toh aapka birthday mere liye bahut important hai.
+Aap sirf meri best friend hi nahi ho,
+balki woh insaan ho jisse baat karke hamesha sukoon milta hai.
+
+Meri dua hai ki aapki life hamesha khushiyon se bhari rahe
+aur aap hamesha muskurati rahein.
+
+Countdown chal raha hai…
+
+Aur jab woh din aayega — 30 March —
+toh dil se ek hi baat niklegi:
+
+Happy Birthday Anshika ji.
+May your life always stay as beautiful as your smile.`;
+
+var i=0;
+
+function startMessage(){
+var speed=35;
+
+function type(){
+if(i<text.length){
+document.getElementById("message").innerHTML+=text.charAt(i);
+i++;
+setTimeout(type,speed);
+}
+}
+
+type();
+}
+
+/* surprise */
+
+function showSurprise(){
+document.getElementById("surprise").style.display="block";
+}
+
+/* falling hearts */
+
+setInterval(()=>{
+let heart=document.createElement("div");
+heart.className="heart";
+heart.innerHTML="💗";
+heart.style.left=Math.random()*100+"vw";
+heart.style.fontSize=(10+Math.random()*25)+"px";
+document.body.appendChild(heart);
+
+setTimeout(()=>{
+heart.remove();
+},6000);
+
+},300);
+
+</script>
+
+</body>
+</html>
